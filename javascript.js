@@ -31,3 +31,9 @@ function operate(a, b, c){
         alert("Please try again!");
     }
 }
+
+const display = document.querySelector('#calcDisplay');
+
+function displayText(){
+
+}
