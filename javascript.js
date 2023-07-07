@@ -8,14 +8,14 @@ let afterEquals = false;
 
 function operate(a, b, c){
     if (b === "+") {
-        return a + c;
+        return Math.round((a + c) * 10000) / 10000;
     }   else if (b === "-") {
-        return a - c;
+        return Math.round((a - c) * 10000) / 10000;
     }   else if (b === "*") {
-        return a * c;
+        return Math.round((a * c) * 10000) / 10000;
     }   else if (b === "/") {
         if (c !== 0) {
-            return a / c;
+            return Math.round((a / c) * 10000) / 10000;
         } else {
             return NaN;
         }
