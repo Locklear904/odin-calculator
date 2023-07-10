@@ -5,17 +5,18 @@ let operator = "";
 let result = 0;
 let clearNextText = false;
 let afterEquals = false;
+let hasDecimal = false;
 
 function operate(a, b, c){
     if (b === "+") {
-        return Math.round((a + c) * 10000) / 10000;
+        return Math.round((a + c) * 100000) / 100000;
     }   else if (b === "-") {
-        return Math.round((a - c) * 10000) / 10000;
+        return Math.round((a - c) * 100000) / 100000;
     }   else if (b === "*") {
-        return Math.round((a * c) * 10000) / 10000;
+        return Math.round((a * c) * 100000) / 100000;
     }   else if (b === "/") {
         if (c !== 0) {
-            return Math.round((a / c) * 10000) / 10000;
+            return Math.round((a / c) * 100000) / 100000;
         } else {
             return NaN;
         }
@@ -31,6 +32,7 @@ const calcOpBtns = document.querySelectorAll('.calcOpBtn');
 const EqBtn = document.querySelector('#calcEqBtn');
 const clrBtn = document.querySelector('#clrBtn');
 const backBTn = document.querySelector('#backBtn');
+const decBtn = document.querySelector('#decBtn');
 
 function NumListeners(button){
     button.addEventListener("click", displayText);
@@ -46,6 +48,15 @@ function displayText(){
         display.textContent = "";
     }
     display.textContent += event.target.textContent;
+}
+
+function displayDecimal(){
+    //Do nothing if display contains a decimal already
+    if ((display.textContent).toString().includes('.')) {
+
+    }   else {
+        displayText();
+    }
 }
 
 function doOperation(){
@@ -78,10 +89,11 @@ function clear(){
 }
 
 function backspace() {
-    display.textContent = (display.textContent).toString().split('').slice(0, -1).join('');
-    Number(display.textContent);
+    display.textContent = (display.textContent).toString().slice(0, -1);
+    display.textContent = Number(display.textContent);
 }
 
+decBtn.addEventListener("click", displayDecimal);
 backBTn.addEventListener("click", backspace);
 clrBtn.addEventListener("click", clear);
 EqBtn.addEventListener("click", equals)

@@ -14,17 +14,14 @@
     flex-direction: row;
 }
 
-.calcBtn, .calcOpBtn, #calcEqBtn, #clrBtn, #backBtn {
+button {
+    font-weight: bold;
+    font-size: 20px;
     flex: 1;
     text-align: center;
 }
 
-button {
-    font-weight: bold;
-    font-size: 20px;
-}
-
-.calcBtn {
+.calcBtn, #decBtn {
     background-color: white;
 }
 
