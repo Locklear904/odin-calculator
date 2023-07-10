@@ -89,8 +89,7 @@ function clear(){
 }
 
 function backspace() {
-    display.textContent = (display.textContent).toString().slice(0, -1);
-    display.textContent = Number(display.textContent);
+    display.textContent = Number((display.textContent).toString().slice(0, -1));
 }
 
 decBtn.addEventListener("click", displayDecimal);
@@ -99,6 +98,23 @@ clrBtn.addEventListener("click", clear);
 EqBtn.addEventListener("click", equals)
 calcButtons.forEach(NumListeners);
 calcOpBtns.forEach(OpListeners);
+
+document.addEventListener("keydown", (e) => {
+    if (e.key == ".") {
+        decBtn.click();
+    }   else if (e.key >= 0 && e.key <= 9) {
+        document.getElementById(e.key + "Btn").click();
+    }   else if (e.key == "+" || e.key == "-" || e.key == "*" || e.key == "/") {
+        event.preventDefault();
+        document.getElementById(e.key + "Btn").click();
+    }   else if (e.key == "Backspace") {
+        backBTn.click();
+    }   else if (e.key == "Delete" || e.key == "c") {
+        clrBtn.click();
+    }   else if (e.key == "=") {
+        EqBtn.click();
+    }
+});
 
 //Original simple operation function
 /*function doOperation(){
