@@ -30,6 +30,7 @@ const calcButtons = document.querySelectorAll('.calcBtn');
 const calcOpBtns = document.querySelectorAll('.calcOpBtn');
 const EqBtn = document.querySelector('#calcEqBtn');
 const clrBtn = document.querySelector('#clrBtn');
+const backBTn = document.querySelector('#backBtn');
 
 function NumListeners(button){
     button.addEventListener("click", displayText);
@@ -76,6 +77,12 @@ function clear(){
     operator = "";
 }
 
+function backspace() {
+    display.textContent = (display.textContent).toString().split('').slice(0, -1).join('');
+    Number(display.textContent);
+}
+
+backBTn.addEventListener("click", backspace);
 clrBtn.addEventListener("click", clear);
 EqBtn.addEventListener("click", equals)
 calcButtons.forEach(NumListeners);
